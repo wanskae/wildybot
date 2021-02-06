@@ -1,0 +1,17 @@
+{
+  "name": "wildybot",
+  "version": "1.1.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wanskae",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "google-auth-library": "^6.0.6",
+    "google-spreadsheet": "^2.0.6",
+    "opusscript": "0.0.7"
+  }
+}
