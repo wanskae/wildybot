@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js');
 const GoogleSpreadsheet = require('google-spreadsheet');
 const { promisify } = require('util');
 
-const creds = require('../../config.js');
+const creds = require('../../client_secret.json');
 const prefix = require('../../main.js');
 
 module.exports = {

@@ -1,4 +1,4 @@
-const { MessageEmbed, Util, MessageManager } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'wiki',
@@ -46,21 +46,27 @@ module.exports = {
                         .setFooter(`Komennon suoritti ${message.author.tag}`)
                         message.channel.send(embed);
                     }else{
-                        const selfEmbed = new MessageEmbed()
+                        const embed = new MessageEmbed()
                         .setTitle('Nimi vaihdettu')
                         .setColor('0xd62075')
                         .setDescription(`Käyttäjän **${message.member.nickname}** uusi nimi on **${decoded}**.\nLue Wikipedia-artikkeli osoitteesta ${title}`)
                         .setFooter(`Komennon suoritti ${message.author.tag}`)
 
-                        message.channel.send(selfEmbed);
+                        message.channel.send(embed);
                         message.guild.members.cache.get(message.author.id).setNickname(decoded)
                     }
+                }else if(message.mentions.members.size < 1){
+                    const embed = new MessageEmbed()
+                    .setTitle('Virhe')
+                    .setColor('0xd62075')
+                    .setDescription(`Virheellinen komennon argumentti. Käytä \`?wiki [@käyttäjä]\``)
+                    return message.channel.send(embed).then(msg => msg.delete({ timeout: 10000 }));
                 }else{
 
                     const oldUser = message.mentions.members.first().nickname
                     const user = message.mentions.members.first().id
 
-                    if(message.author.id === user && message.member.hasPermission('ADMINISTRATOR') || user === '265879123665223682'){
+                    if(message.author.id === user && message.member.hasPermission('ADMINISTRATOR') || message.guild.members.cache.get(user).hasPermission('ADMINISTRATOR')){
                         const embed = new MessageEmbed()
                         .setTitle('Satunnainen artikkeli')
                         .setColor('0xd62075')
