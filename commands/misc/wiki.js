@@ -2,7 +2,7 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'wiki',
-    description: "Nimi wikistä",
+    description: "Satunnainen nimi wikipediasta",
     cooldown: 10800,
     expire: '3h',
     execute(message, args, client){
